@@ -95,14 +95,14 @@ f = theano.function([],outputs = loss_contrast,updates=g_update)
 ## version 2: use theano scan with shared variable of the grayv
 #################
 ## for computing loss of one step
-def onepari(grayv_i, l_i, a_i, b_i, grayv, l_ini, a_ini, b_ini):
-    l_delta = l_i - l_ini
-    a_delta = a_i - a_ini
-    b_delta = b_i - b_ini
-    s_delta = T.sqrt(T.sqr(l_delta) + T.sqr(a_delta) + T.sqr(b_delta))
+# def onepari(grayv_i, l_i, a_i, b_i, grayv, l_ini, a_ini, b_ini):
+#     l_delta = l_i - l_ini
+#     a_delta = a_i - a_ini
+#     b_delta = b_i - b_ini
+#     s_delta = T.sqrt(T.sqr(l_delta) + T.sqr(a_delta) + T.sqr(b_delta))
 
-    flag = 1 * T.and_(T.and_(T.gt(l_delta, 0),T.gt(a_delta,0)),T.gt(b_delta,0)) + (-1)*T.and_(T.and_(T.lt(l_delta, 0),T.lt(a_delta,0)),T.lt(b_delta,0))  
-    g_delta = grayv_i-grayv
+#     flag = 1 * T.and_(T.and_(T.gt(l_delta, 0),T.gt(a_delta,0)),T.gt(b_delta,0)) + (-1)*T.and_(T.and_(T.lt(l_delta, 0),T.lt(a_delta,0)),T.lt(b_delta,0))  
+#     g_delta = grayv_i-grayv
 #         if flag==0:
 #             loss_t = T.abs_(g_delta) - c * s_delta
 #         else:
